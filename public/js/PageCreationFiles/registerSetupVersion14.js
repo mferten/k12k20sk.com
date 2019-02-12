@@ -1,9 +1,11 @@
 'use strict';
 
-importAnExternalJSFileIfNotYetWithNoProcessing("StaticDataForRegion", "js/staticDataForRegion.js");
+importAnExternalJSFileIfNotYetWithNoProcessing("StaticDataForRegion", "js/OneCountryLanguageTextJSFiles/staticDataForRegion.js");
 
 currentEWorldPage = "Startup";
 dashBoardFlag = false;
+
+initializationUtilityForAll();
 
 var registerBody =  document.createElement("body");
 registerBody.setAttribute("name","register");
@@ -24,26 +26,6 @@ var registerMain =  document.createElement("main");
 var registerForm =  document.createElement("form");
 registerForm.setAttribute("id", "registerForm");
 registerForm.setAttribute("class", "signInMargin");
-var registerFieldset =  document.createElement("fieldset");
-registerFieldset.setAttribute("class", "registerSize");
-var registerLegend =  document.createElement("legend");
-registerLegend.setAttribute("class", "registerLegend");
-registerLegend.innerHTML = "Application Language:";
-
-registerFieldset.appendChild(registerLegend);
-
-var registerLabel =  document.createElement("label");
-registerLabel.setAttribute("for", "appLanguageToUseB");
-var registerSelect =  document.createElement("select");
-registerSelect.setAttribute("id", "appLanguageToUseB");
-registerSelect.setAttribute("disabled", true);
-registerSelect.setAttribute("class", "selectBoxStyles applicationLanguageRegister");
-registerLabel.appendChild(getASpanElement("id_AppLanguageToUseB", myUndefined,selectedApplicationLanguageTexts["id_AppLanguageToUseB"]));
-registerLabel.appendChild(registerSelect);
-
-registerFieldset.appendChild(registerLabel);
-
-registerForm.appendChild(registerFieldset);
 
 // add a Legend and Fieldset to the Regions
 var regionFieldset = document.createElement("fieldset");
@@ -96,7 +78,6 @@ registerForm.appendChild(personFieldset);
 flagOfCountries = startupValuesJSONObject.flagOfCountries; // incase Global was activated priorily
 flagOfCountriesFullName = startupValuesJSONObject.flagOfCountriesFullName; // incase Global was activated priorily
 setTimeout(function() {
-    setCombineValueCodes();
     registerMain.appendChild(registerForm);
     // Registration Button
     var saveTextSpan = getASpanElement("id_Save","appleIOSTop",selectedApplicationLanguageTexts["id_Save"]);
@@ -132,7 +113,7 @@ setTimeout(function() {
     registerBody.appendChild(registerFooter);
     document.getElementById("topHTML").replaceChild(registerBody, document.body);
     setNavFooterTags("Register");
-    // start "js/addStartupValues.js"
+
     setStartupValues(startupValuesJSONObject);
     // set the Application Texts
     document.getElementById("id_SaveStartupValues").addEventListener("click", function(event) { // Save the Startup Values into Local Storage
@@ -143,36 +124,15 @@ setTimeout(function() {
     setTheSelectedRegion(startupValuesJSONObject.region);
 }, 250);
 
-setTimeout(function () {
-    // Application Language retrieved by Ajax
-    if (applicationLanguageDropDownValues)
-        setApplicationLanguageDropDownBox("appLanguageToUseB", JSON.parse(applicationLanguageDropDownValues));
-        document.getElementById("appLanguageToUseB").selectedIndex = (startupValuesJSONObject.language.substring(22)-1);
-}, 300);
-
-// Application Language Drop Down (Select/Options)
-setTimeout(function () {
-    setApplicationLanguageDropDownBox("appLanguageToUse", JSON.parse(applicationLanguageDropDownValues));
-    document.getElementById("appLanguageToUse").options[applicationTextLanguageSelectedIndex].selected = "selected";
-}, 350);
-
 // Save the Startup Configuration into the Local Storage
 function saveStartupValues(startupValuesJSONObject)
 {
     setTimeout(function() {
-        startupValuesJSONObject.language = document.getElementById('appLanguageToUseB').value; // Set the Application language
-        startupValuesJSONObject.languageText =   document.getElementById('appLanguageToUseB').getElementsByTagName('option')
-            [document.getElementById(startupValuesJSONObject.language).index].innerHTML; // Set the Application language Text
         startupValuesJSONObject.region = document.forms[0].querySelector('input[name="region"]:checked').value; // set the Region
         startupValuesJSONObject.isSoundOff = document.getElementById('id_CheckBoxPlaySounds').checked; // set Sound On/Off
         startupValuesJSONObject.combine = document.forms[0].querySelector('input[name="combine"]:checked').value; // set Combine And Or
         startupValuesJSONObject.isReverse = document.getElementById('id_RadioCombineReverseSearch').checked; // set Reverse On/Off
         startupValuesJSONObject.startWith = startWithURL[document.getElementById('id_StartWithSelect').value]; // Set the Start With URL
-        if (selectedApplicationLanguageTextsB) {
-            selectedApplicationLanguageTexts = selectedApplicationLanguageTextsB; // since Saving, start with the Selected (new) Application Language
-            startupValuesJSONObject.applicationLanguageText = selectedApplicationLanguageTextsB; // to startup Language as it is...
-        }
-        // keep the default/current one
         // set the Region Values
         startupValuesJSONObject.flagOfCountries = flagOfCountries;
         startupValuesJSONObject.languageOfCountries = languageOfCountries;
@@ -195,20 +155,14 @@ function setStartupValues(savedValuesJSONObject)
     // if Local Storage data exits,  retrieve it
     if (window.localStorage.startupValues)
     {
-        // Get HTML Option Element by its Id, use its "index" property:
-        // Set the Application language
-        if (document.getElementById('appLanguageToUseB') &&
-            document.getElementById('appLanguageToUseB').getElementsByTagName('option').length > 0)
-        {
-            document.getElementById('appLanguageToUseB').getElementsByTagName('option')
-                [document.getElementById(savedValuesJSONObject.language).index].selected = 'selected';
-        }
         // set the Region
         document.getElementById(savedValuesJSONObject.region).checked = true;
         // set the Sound On/Off Check Box
         document.getElementById("id_CheckBoxPlaySounds").checked = savedValuesJSONObject.isSoundOff;
         // set the Combine Search Box
-        document.getElementById(savedValuesJSONObject.combine).checked = true;
+        document.getElementById(combineMatrix[savedValuesJSONObject.combine]).checked = true;
+        document.getElementById(combineMatrix[savedValuesJSONObject.combine]).classList.add("selectedInputTag");
+        previousCombineOption = combineMatrix[savedValuesJSONObject.combine];
         // set the Reverse On/Off
         document.getElementById("id_RadioCombineReverseSearch").checked = savedValuesJSONObject.isReverse;
         if (savedValuesJSONObject.isReverse) document.getElementById("id_CombineSearchReverse").classList.add("selectedInputTag");
@@ -234,20 +188,6 @@ function changeStartupEvents(event)
         processRegion(eventId, false); // id not value
         setTheSelectedRegion(eventId); // mark it selected
     }
-    // a language selected retrieve and save the Applicaiton Texts
-    else if (eventId == 'appLanguageToUse' || eventId == 'appLanguageToUseB')
-    {
-        if (eventId == 'appLanguageToUse') {
-            var languageId = document.getElementById("appLanguageToUse").value.substring(22); // 1, 2, 3 but starts with 0..
-            // utilityForAll has selectedApplicationLanguageTexts as global value
-            window.open(applicationHrefs[languageId], "_self");
-        }
-        else {
-            var languageId = document.getElementById("appLanguageToUseB").value.substring(22); // 1, 2, 3 but starts with 0..
-            setApplicationLanguage(languageId, false);
-        }
-        event.preventDefault(); // do not attempt to submit the form
-    }
     // If Pause/Play Icon clicked:
     else if (eventId == 'id_CheckBoxPlaySounds')
     {
@@ -265,16 +205,11 @@ function changeStartupEvents(event)
         }
     }
     else if (event.target.name == "combine")
-    {
-        if (previousCombineOption == -1)
+    {   eventId = combineMatrix[eventId];
+        if (previousCombineOption != eventId)
         {
-            document.getElementById(combineMatrix[eventId]).classList.add("selectedInputTag");
-            previousCombineOption = eventId;
-        }
-        else
-        {
-            document.getElementById(combineMatrix[previousCombineOption]).classList.remove("selectedInputTag");
-            document.getElementById(combineMatrix[eventId]).classList.add("selectedInputTag");
+            document.getElementById(previousCombineOption).classList.remove("selectedInputTag");
+            document.getElementById(eventId).classList.add("selectedInputTag");
             previousCombineOption = eventId;
         }
     }

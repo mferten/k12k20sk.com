@@ -1,8 +1,12 @@
-"use strict";
+﻿"use strict";
 
 var DEFAULTREGIONAPPLICATIONLANGUAGE = "appLanguageToUseOption3";
 var DEFAULTREGIONAPPLICATIONCOUNTRYANDLANGUAGE = "Slovakia-Slovak";
 var DEFAULTREGION = "Europe";
+
+//  Keep Adding new Application Languages (both Text and Data)
+var selectedApplicationLanguageName = {"English (US)":["Anglický", "UnitedStatesofAmerica", "http://www.k12k20.com"],
+    "Turkish":["Turecký", "Turkey", "http://www.k12k20tr.com"], "Slovak":["Slovenský", "Slovakia", "http://www.k12k20sk.com"]};
 
 // DEFAULT REGION Application Start UP Values which will be used to load into Local Storage Area
 // console.log(encodeURIComponent(JSON.stringify(selectedApplicationLanguageTexts))) and encodeURIComponent(JSON.stringify(languageOfCountries)
