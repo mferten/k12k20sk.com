@@ -3,6 +3,9 @@
 var DEFAULTREGIONAPPLICATIONLANGUAGE = "appLanguageToUseOption3";
 var DEFAULTREGIONAPPLICATIONCOUNTRYANDLANGUAGE = "Slovakia-Slovak";
 var DEFAULTREGION = "Europe";
+var DEFAULTCOUNTRY = "Slovakia";
+var DEFAULTLANGUAGE = "Slovenský";
+var DEFAULTURL = "http://www.k12k20sk.com";
 
 //  Keep Adding new Application Languages (both Text and Data)
 var selectedApplicationLanguageName = {"English (US)":["Anglický", "UnitedStatesofAmerica",
