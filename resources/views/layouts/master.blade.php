@@ -11,7 +11,7 @@
         </script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="K12K20.com: World SVG Maps & Flags: RCP (Rich Client Platform) - SPA (Single Page Application)">
+        <meta name="description" content="K12K20.com: SVG Maps & Flags: RCP (Rich Client Platform) - SPA (Single Page Application)">
         <meta name="keywords" content="K12K20.com: SVG Maps & Flags RCP -SPA">
         <meta name="author" content="MFE Mehmet Fatih Erten">
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -27,7 +27,4 @@
         <script src="js/OneCountryLanguageTextJSFiles/flagsSVGFilesVersion14.js"></script>
         <script src="js/OneCountryLanguageTextJSFiles/countriesFeaturesVersion14.js"></script>
     </head>
-    <body>
-        <p class="displayNone">Place Holder</p>
-    </body>
 </html>
