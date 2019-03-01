@@ -438,16 +438,16 @@ function getTheRatio(value, worldValue)
 function finalizeCountriesPage() {
     document.getElementById("topHTML").replaceChild(eWorldCountriesBody, document.body);
     // (2) to rebuild the Table use this one
-    // /*
+    /*
         createATable("id_CountryListMenu", ["Country","Region","Capital","Largest","Population","Surface","Income","Country Codes"],
             countryCodesOfAllCountriesSortedBySlovakLongNames, -999, "Array", myUndefined, true, 16);
-    // */
-     // (1) document.getElementById("id_CountryListMenu").innerHTML = decodeURIComponent(countriesTableData); // if the Table Data is Saved, to rebuild comment this decodeURI out
+    */
+    document.getElementById("id_CountryListMenu").innerHTML = decodeURIComponent(countriesTableData); // (1) // if the Table Data is Saved, to rebuild comment this decodeURI out
     document.getElementById("id_CountryFacts").innerHTML = selectedApplicationLanguageTexts["id_Countries"]; // start place holder
     triggerAMouseEvent("id_A");
     document.getElementsByTagName("body")[0].classList.add("countryCodeBodyBackground");
-    setTheTableData(); // (3) if the Table Data is NOT saved
-    /* (4) if table data is SAVED
+    // (3) setTheTableData(); // if the Table Data is NOT saved
+    // /* (4) if table data is SAVED
     var tableRows = document.getElementById("id_CountryListMenu").rows; // if the Table Data is Saved
     headerRow = tableRows[0];
     for (var oneRow in tableRows)
@@ -462,15 +462,15 @@ function finalizeCountriesPage() {
     }
     document.getElementById("id_Country CodesThText").innerHTML = selectedApplicationLanguageTexts["id_Country CodesThText"];
     document.getElementById("id_LargestThText").innerHTML = selectedApplicationLanguageTexts["id_LargestThText"];
-    */ // end of (4)
+    // */ // end of (4)
     document.getElementById("id_CountryListMenu").classList.remove("displayNone");
     document.getElementById("id_CountryListMenuDiv").classList.remove("displayNone");
     // set the default (initial) sort
     currentSortIcon = "id_CountryTh";
     if (document.getElementById(currentSortIcon+"Text"))
         document.getElementById(currentSortIcon+"Text").classList.add("selectedInputTag");
-    console.log(encodeURIComponent(document.getElementById("id_CountryListMenu").innerHTML)); // (5) // print if not SAVED (to be SAVED)
-    // console.log(encodeURIComponent(document.getElementById("id_Letters26").innerHTML)); // (6) // to save A-Z
+    // (5) console.log(encodeURIComponent(document.getElementById("id_CountryListMenu").innerHTML));  // print if not SAVED (to be SAVED)
+    // (6) console.log(encodeURIComponent(document.getElementById("id_Letters26").innerHTML)); // to save A-Z
     // id_A to Z and ALL add Click Event for iPhone/iPad
     if (appleProduct) {
         var letters = ["A", "B", "C", "Č", "D", "E", "F", "G", "H", "I", "Í", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "Š",
