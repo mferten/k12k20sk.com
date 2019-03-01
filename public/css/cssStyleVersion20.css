@@ -1023,6 +1023,10 @@ li a:hover {
 /* iPhone 375 x 667 */
 /* iPad 768 x 1024 iPad */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    body {
+        display: grid;
+    }
+
     .myInfoPage {
         grid-template-columns: 25% calc(50% - .4rem) 25%;
         margin: auto 1%;
