@@ -1227,9 +1227,9 @@
 		"feature": "Language",
 		"comment": ""
 	}, {
-		"value": "Antarktický a Tichý Oceán ",
-		"feature": "WaterDisplay",
-		"comment": ""
+		"value": "Atlantický",
+		"feature": "Water",
+		"comment": "Oceán"
 	}, {
 		"value": "Kresťanstvo",
 		"feature": "Religion",
@@ -1278,14 +1278,6 @@
 		"value": 14564,
 		"feature": "GDP",
 		"comment": ""
-	}, {
-		"value": "Antarktický",
-		"feature": "Water",
-		"comment": "Oceán"
-	}, {
-		"value": "Tichý",
-		"feature": "Water",
-		"comment": "Oceán"
 	}, {
 		"value": "Buenos Aires",
 		"feature": "CapitalCitiesPopulationDisplay",
@@ -2483,7 +2475,7 @@
 		"feature": "Language",
 		"comment": ""
 	}, {
-		"value": "Bengálsky záliv a Indický Oceán ",
+		"value": "Bengal Körfezi a Indický Oceán ",
 		"feature": "WaterDisplay",
 		"comment": ""
 	}, {
@@ -3356,7 +3348,7 @@
 		"feature": "Language",
 		"comment": ""
 	}, {
-		"value": "Guinejský záliv a Atlantický Oceán ",
+		"value": "Gine Körfezi a Atlantický Oceán ",
 		"feature": "WaterDisplay",
 		"comment": ""
 	}, {
@@ -5693,13 +5685,13 @@
 		"feature": "HDI",
 		"comment": ""
 	}, {
-		"value": "kmérsky",
-		"feature": "Language",
-		"comment": ""
-	}, {
 		"value": "Phnom Pénh",
 		"feature": "CapitalCities",
 		"comment": "https://en.wikipedia.org/wiki/Phnom_Penh"
+	}, {
+		"value": "kmérsky",
+		"feature": "Language",
+		"comment": ""
 	}, {
 		"value": "Gulf of Thailand and Pacific Ocean",
 		"feature": "Water",
@@ -7310,7 +7302,7 @@
 		"feature": "Language",
 		"comment": ""
 	}, {
-		"value": "Juhočínske more a Filipínske, East Čína, Žlté More , Tichý Oceán ",
+		"value": "Güney Çin a Filipínske, East Čína, Žlté More , Tichý Oceán ",
 		"feature": "WaterDisplay",
 		"comment": ""
 	}, {
@@ -9821,7 +9813,7 @@
 		"feature": "LanguageDisplay",
 		"comment": ""
 	}, {
-		"value": "Guinejský záliv a Atlantický Oceán ",
+		"value": "Gine Körfezi a Atlantický Oceán ",
 		"feature": "WaterDisplay",
 		"comment": ""
 	}, {
@@ -13014,7 +13006,7 @@
 		"feature": "Language",
 		"comment": ""
 	}, {
-		"value": "Anglický kanál a Záliv of Biscay , Stredozemné More ",
+		"value": "İngiliz kanalı a Záliv of Biscay , Stredozemné More ",
 		"feature": "WaterDisplay",
 		"comment": ""
 	}, {
@@ -14298,7 +14290,7 @@
 		"feature": "LanguageDisplay",
 		"comment": ""
 	}, {
-		"value": "Guinejský záliv a Atlantický Oceán ",
+		"value": "Gine Körfezi a Atlantický Oceán ",
 		"feature": "WaterDisplay",
 		"comment": ""
 	}, {
@@ -21508,7 +21500,7 @@
 		"feature": "Language",
 		"comment": ""
 	}, {
-		"value": "Juhočínske more a Andaman, Sulu , Celebes Moria, , Indický a Tichý Oceán ",
+		"value": "Güney Çin a Andaman, Sulu , Celebes Moria, , Indický a Tichý Oceán ",
 		"feature": "WaterDisplay",
 		"comment": ""
 	}, {
@@ -28006,7 +27998,7 @@
 		"feature": "LanguageDisplay",
 		"comment": ""
 	}, {
-		"value": "Juhočínske more a Sulu, Celebes , Filipínske Moria ",
+		"value": "Güney Çin a Sulu, Celebes , Filipínske Moria ",
 		"feature": "WaterDisplay",
 		"comment": ""
 	}, {
@@ -33811,7 +33803,7 @@
 		"feature": "Water",
 		"comment": "Oceán"
 	}, {
-		"value": "Indian Ocean",
+		"value": "Indický",
 		"feature": "Water",
 		"comment": "Oceán"
 	}, {
@@ -36104,7 +36096,7 @@
 		"feature": "Language",
 		"comment": ""
 	}, {
-		"value": "Juhočínske more a Filipínske , East Čína Moria ",
+		"value": "Güney Çin a Filipínske , East Čína Moria ",
 		"feature": "WaterDisplay",
 		"comment": ""
 	}, {
@@ -36776,7 +36768,7 @@
 		"feature": "Language",
 		"comment": ""
 	}, {
-		"value": "Guinejský záliv a Atlantický Oceán ",
+		"value": "Gine Körfezi a Atlantický Oceán ",
 		"feature": "WaterDisplay",
 		"comment": ""
 	}, {
