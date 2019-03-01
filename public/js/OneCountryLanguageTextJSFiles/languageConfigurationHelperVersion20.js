@@ -27,7 +27,7 @@ function setCountryWikiValues(countryName)
     }
 }
 
-var noCountryLetters = {"X":true, "Ž":true};
+var noCountryLetters = {"X":true, "Q":true, "Y":true, "Ž":true};
 
 var capitalCitiesCode = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "Í", "J", "K",
     "L", "M", "N", "O", "P", "Q", "R", "S", "Š", "T", "U", "V", "W", "X", "Y", "Z", "Ž"];

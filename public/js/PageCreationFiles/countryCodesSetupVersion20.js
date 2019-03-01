@@ -473,7 +473,7 @@ function finalizeCountriesPage() {
     // (6) console.log(encodeURIComponent(document.getElementById("id_Letters26").innerHTML)); // to save A-Z
     // id_A to Z and ALL add Click Event for iPhone/iPad
     if (appleProduct) {
-        for (var indexNo in capitalCitiesOptionTexts) {
+        for (var indexNo in capitalCitiesOptionTexts) { console.log(capitalCitiesOptionTexts[indexNo]);
             if (noCountryLetters[capitalCitiesOptionTexts[indexNo]]) { }
             else document.getElementById("id_"+capitalCitiesOptionTexts[indexNo]).addEventListener("click", countryCodesClickEvents, false);
         }
