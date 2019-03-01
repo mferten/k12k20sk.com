@@ -4,7 +4,7 @@ currentEWorldPage = "eWorld Countries"; // this should be up here all the time t
 
 // retrieve the external js files if not open yet
 importAnExternalUtilityJSFile("CountriesTableData", "js/OneCountryLanguageTextJSFiles/countriesTableDataVersion20.js");
-importAnExternalUtilityJSFile("ConversionHelper", "js/OneCountryLanguageTextJSFiles/languageConversionHelperVersion20.js");
+// importAnExternalUtilityJSFile("ConversionHelper", "js/OneCountryLanguageTextJSFiles/languageConversionHelperVersion20.js");
 
 initializationUtilityForFlags();
 
@@ -24,7 +24,7 @@ eWorldCountriesH2.setAttribute("class", "registerH2");
 eWorldCountriesHeader.appendChild(eWorldCountriesH2); // must be here before h2HeaderCodes(
 
 setTimeout(function () {
-    getCountryCodesTableData(); // (0) // call if data is not saved but this is for to save it.
+    // getCountryCodesTableData(); // (0) // call if data is not saved but this is for to save it.
     h2HeaderCodes(eWorldCountriesHeader);
     muteTheSoundCodes(" ");
     addApplicationLanguageSelectionDropDownBox(h2First); // (): adds into h2First (redundant) but the variable will force it to skip class: dashBoardCombine
@@ -441,12 +441,12 @@ function finalizeCountriesPage() {
     /*
         createATable("id_CountryListMenu", ["Country","Region","Capital","Largest","Population","Surface","Income","Country Codes"],
             countryCodesOfAllCountriesSortedBySlovakLongNames, -999, "Array", myUndefined, true, 16);
-    */
+     */
     document.getElementById("id_CountryListMenu").innerHTML = decodeURIComponent(countriesTableData); // (1) // if the Table Data is Saved, to rebuild comment this decodeURI out
     document.getElementById("id_CountryFacts").innerHTML = selectedApplicationLanguageTexts["id_Countries"]; // start place holder
     triggerAMouseEvent("id_A");
     document.getElementsByTagName("body")[0].classList.add("countryCodeBodyBackground");
-    // (3) setTheTableData(); // if the Table Data is NOT saved
+    // setTheTableData(); // if the Table Data is NOT saved
     // /* (4) if table data is SAVED
     var tableRows = document.getElementById("id_CountryListMenu").rows; // if the Table Data is Saved
     headerRow = tableRows[0];
@@ -469,14 +469,13 @@ function finalizeCountriesPage() {
     currentSortIcon = "id_CountryTh";
     if (document.getElementById(currentSortIcon+"Text"))
         document.getElementById(currentSortIcon+"Text").classList.add("selectedInputTag");
-    // (5) console.log(encodeURIComponent(document.getElementById("id_CountryListMenu").innerHTML));  // print if not SAVED (to be SAVED)
+    // (5) console.log(encodeURIComponent(document.getElementById("id_CountryListMenu").innerHTML)); // print if not SAVED (to be SAVED)
     // (6) console.log(encodeURIComponent(document.getElementById("id_Letters26").innerHTML)); // to save A-Z
     // id_A to Z and ALL add Click Event for iPhone/iPad
     if (appleProduct) {
-        var letters = ["A", "B", "C", "Č", "D", "E", "F", "G", "H", "I", "Í", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "Š",
-            "T", "U", "V", "W", "X", "Y", "Z",'All'];
-        for (var i in letters) {
-            document.getElementById("id_"+letters[i]).addEventListener("click", countryCodesClickEvents, false);
+        for (var indexNo in capitalCitiesOptionTexts) {
+            if (noCountryLetters[capitalCitiesOptionTexts[indexNo]]) { }
+            else document.getElementById("id_"+capitalCitiesOptionTexts[indexNo]).addEventListener("click", countryCodesClickEvents, false);
         }
         for (var ii in showPointer) {
             document.getElementById(ii).addEventListener("click", countryCodesClickEvents, false);
