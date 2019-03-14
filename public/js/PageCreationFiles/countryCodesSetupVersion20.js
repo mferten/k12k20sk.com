@@ -101,8 +101,6 @@ setTimeout(function () {
 }, 50);
 
 var processTheseTH = {0:true,1:true,2:true,4:true,5:true,6:true};
-var threeBelongsToOthers = {"UnitedStatesMinorOutlyingIslands":"UnitedStatesofAmerica",
-    "HeardIslandandMcDonaldIslands":"Australia", "BouvetIsland":"Norway" };
 var currentLetter = myUndefined;
 var tableRowsByCapitalCity = {};
 var currentSortIcon;
@@ -140,7 +138,7 @@ function setTheTableRows(tableRows)
             addCodesClassToEachTd(tableRows[oneRow].cells);
             var countryNameFromTD = tableRows[oneRow].cells[1].innerHTML;
             tableRows[oneRow].setAttribute("id", "id_" + oneRow);
-            tableRows[oneRow].setAttribute("name", countryFromISOLongName[countryNameFromTD]?countryFromISOLongName[countryNameFromTD]:countryNameFromTD);
+            tableRows[oneRow].setAttribute("name", countryNameFromLongName[countryNameFromTD]);
             tableRows[oneRow].cells[0].classList.add("displayNone");
             tableRows[oneRow].cells[9].classList.add("displayNone");
             oneFlagImageElement = document.createElement("img");
@@ -149,8 +147,8 @@ function setTheTableRows(tableRows)
             if (countryNameFromTD.indexOf("|") != -1) {
                 countryNameFromTD = countryNameFromTD.substring(0, countryNameFromTD.indexOf("|"));
                 tableRows[oneRow].cells[1].innerHTML = tableRows[oneRow].cells[1].innerHTML.substring(0, tableRows[oneRow].cells[1].innerHTML.indexOf("|"));
-            } // Set the flags
-            if (flagsSVGFiles[countryNameFromTD]) {
+            }
+            if (flagsSVGFiles[countryNameFromTD]) { // Set the flags
                 oneFlagImageElement.src = "data:image/svg+xml," + flagsSVGFiles[countryNameFromTD].svg;
                 setAnIdForAFlag(oneFlagImageElement, countryNameFromTD)
             }
@@ -160,7 +158,7 @@ function setTheTableRows(tableRows)
             }
             else if (threeBelongsToOthers[countryNameFromLongName[countryNameFromTD]]) {
                 oneFlagImageElement.src = "data:image/svg+xml," + flagsSVGFiles[threeBelongsToOthers[countryNameFromLongName[countryNameFromTD]]].svg;
-                setAnIdForAFlag(oneFlagImageElement, threeBelongsToOthers[countryNameFromLongName[countryNameFromTD]]);
+                setAnIdForAFlag(oneFlagImageElement, countryNameFromLongName[countryNameFromTD]);
             }
             else console.log(countryNameFromTD);
             oneFlagImageElement.alt = "Entity: " + countryNameFromTD;
@@ -374,10 +372,10 @@ function getCountryCodesTableData()
     var worldIncome = 87500000000000;
     var worldSurfaceArea = 149000000;
     var capitalCitiesOfAllCountriesRaw = {};
-    for (var aCountry in countryCodesOfAllCountriesSortedBySlovakLongNames)
+    for (var aCountry in countryCodesOfAllCountriesSortedByTurkishLongNames)
     {   /* countryListOfAllCountries { "Afghanistan":["Region","CapitalCity","Big City", "Population", "Surface", "Income", "Alpha-2, Alpha-3, Numeric, GEC & Calling"],... } */
         oneCountryFeatures = featuresOfAllCountries[aCountry];
-        oneCountryCodes = countryCodesOfAllCountriesSortedBySlovakLongNames[aCountry];
+        oneCountryCodes = countryCodesOfAllCountriesSortedByTurkishLongNames[aCountry];
         if (oneCountryFeatures[14]['feature'] == "CapitalCitiesDisplay") {
               var indexCapital = 0;
               for (var oneFeature in oneCountryFeatures) {
@@ -401,7 +399,7 @@ function getCountryCodesTableData()
                 oneCountryCodes[0] + ", " + oneCountryCodes[1] + ", " + oneCountryCodes[2] + ", " + oneCountryCodes[3] + ", " + oneCountryCodes[4], oneCountryFeatures[14]['value']];
         }
     }
-    countryCodesOfAllCountriesSortedBySlovakLongNames = capitalCitiesOfAllCountriesRaw;
+    countryCodesOfAllCountriesSortedByTurkishLongNames = capitalCitiesOfAllCountriesRaw;
 }
 
 // maybe + 'comment'/population... % == use this as a base to find out Capital City Population Population to world population, Surface to world surface is a direct function call..
@@ -440,13 +438,13 @@ function finalizeCountriesPage() {
     // (2) to rebuild the Table use this one
     /*
         createATable("id_CountryListMenu", ["Country","Region","Capital","Largest","Population","Surface","Income","Country Codes"],
-            countryCodesOfAllCountriesSortedBySlovakLongNames, -999, "Array", myUndefined, true, 16);
+            countryCodesOfAllCountriesSortedByTurkishLongNames, -999, "Array", myUndefined, true, 16);
      */
-    document.getElementById("id_CountryListMenu").innerHTML = decodeURIComponent(countriesTableData); // (1) // if the Table Data is Saved, to rebuild comment this decodeURI out
+    document.getElementById("id_CountryListMenu").innerHTML = decodeURIComponent(countriesTableData); // (1) if the Table Data is Saved, to rebuild comment this decodeURI out
     document.getElementById("id_CountryFacts").innerHTML = selectedApplicationLanguageTexts["id_Countries"]; // start place holder
     triggerAMouseEvent("id_A");
     document.getElementsByTagName("body")[0].classList.add("countryCodeBodyBackground");
-    // setTheTableData(); // if the Table Data is NOT saved
+    // setTheTableData(); // (3) if the Table Data is NOT saved
     // /* (4) if table data is SAVED
     var tableRows = document.getElementById("id_CountryListMenu").rows; // if the Table Data is Saved
     headerRow = tableRows[0];
@@ -469,8 +467,8 @@ function finalizeCountriesPage() {
     currentSortIcon = "id_CountryTh";
     if (document.getElementById(currentSortIcon+"Text"))
         document.getElementById(currentSortIcon+"Text").classList.add("selectedInputTag");
-    // (5) console.log(encodeURIComponent(document.getElementById("id_CountryListMenu").innerHTML)); // print if not SAVED (to be SAVED)
-    // (6) console.log(encodeURIComponent(document.getElementById("id_Letters26").innerHTML)); // to save A-Z
+    // console.log(encodeURIComponent(document.getElementById("id_CountryListMenu").innerHTML)); // (5) // print if not SAVED (to be SAVED)
+    // console.log(encodeURIComponent(document.getElementById("id_Letters26").innerHTML)); // (6) // to save A-Z
     // id_A to Z and ALL add Click Event for iPhone/iPad
     if (appleProduct) {
         for (var indexNo in capitalCitiesOptionTexts) {
