@@ -191,7 +191,7 @@ class ApplicationLanguageDataTableSeeder extends Seeder
         "B.Ú.I.O","Britské územie Indického oceánu","B.P.O","Britské Panenské ostrovy",
         "Brunej","Brunej","Bulharsko","Bulharsko","Burkina Faso","Burkina Faso","Burundi","Burundi","Kambodža","Kambodža",
         "Kamerun","Kamerun","Kanada","Kanada","Kanarske","Kanarske ostrovy","Kapverdy","Kapverdy","Kajmany","Kajmanské ostrovy",
-        "Stredoafrická republika","Stredoafrická republika","Čad","Čad","Čile","Čile","Čína","Čína","Vianočný","Vianočný ostrov",
+        "Stredoafrická","Stredoafrická republika","Čad","Čad","Čile","Čile","Čína","Čína","Vianočný","Vianočný ostrov",
         "Kokosové","Kokosové ostrovy","Kolumbia","Kolumbia","Komory","Komory","Cookove","Cookove ostrovy","Kostarika","Kostarika",
         "Slonoviny","Pobrežie Slonoviny","Chorvátsko","Chorvátsko","Kuba","Kuba","Curaçao","Curaçao","Cyprus","Cyprus",
         "Česko","Česko","Konžská DR","Konžská demokratická republika","Dánsko","Dánsko","Džibutsko","Džibutsko","Dominika","Dominika",

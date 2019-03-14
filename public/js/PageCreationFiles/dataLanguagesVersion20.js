@@ -1,6 +1,5 @@
 'use strict';
 
-
 importAnExternalUtilityJSFile("ConversionHelper", "js/OneCountryLanguageTextJSFiles/languageConversionHelperVersion20.js");
 
 // Application (Page) Name
@@ -350,7 +349,7 @@ function getThisApplicationLanguageData()
 
 function newLanguageCodeTextGeneration(tagsTextsArray) {
     // create World View Flags
-    // recreateTheFlagsWithNewCountry(false);
+    recreateTheFlagsWithNewCountry(false);
 
     setApplicationLanguage(3); // get a language Application Text: 1=USA(English) 2=Turkey(Turkish) 3=Slovakia(Slovak) ...
     // console.log(encodeURIComponent(DEFAULTREGIONAPPLICATIONLANGUAGETEXT));
@@ -416,7 +415,7 @@ function convertTheRestFeaturesOfAllCountries(englishToSelectedLanguageJSONObjec
         }
     }
     convertTheComments(englishToSelectedLanguageJSONObject);
-    console.log(JSON.stringify(featuresOfAllCountries));
+    // console.log(JSON.stringify(featuresOfAllCountries));
 }
 
 function convertTheComments(englishToSelectedLanguageJSONObject) {
@@ -1723,7 +1722,7 @@ function recreateTheFlagsWithNewCountry(worldViewFlag) { // True: World, False: 
         if (worldViewFlag == false) { // !worldViewFlag
             oneFlagSpanElement = document.createElement("span");
             oneFlagSpanElement.setAttribute("class", "inlineBlock");
-            oneFlagFigCaptionElement = document.createElement("figcaption");
+            oneFlagFigCaptionElement = document.createElement("figcaption"); console.log(flagOfCountries[key]); console.log(flagOfCountriesShortNames[flagOfCountries[key]]);
             oneFlagFigCaptionElement.innerHTML = flagOfCountriesShortNames[flagOfCountries[key]]; // must be with the NEW Language: see below
         }
         var oneCountryNameFromArray = flagOfCountries[key];
