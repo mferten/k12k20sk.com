@@ -57,7 +57,7 @@ function setMenuImage(firstTime) {
 
     var menuImageCaption = document.createElement("figcaption");
     menuImageCaption.setAttribute("class","borderImage");
-    menuImageCaption.innerHTML = "Vytvorte prírodnú farmu, web ako podnikový hotel";
+    menuImageCaption.innerHTML = "Prototyping Web Company v rámci Organic Farm Inn";
     menuMain.appendChild(menuImageCaption);
 
     var menuImage = document.createElement("img");
