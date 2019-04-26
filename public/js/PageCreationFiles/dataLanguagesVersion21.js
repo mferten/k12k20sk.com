@@ -1,6 +1,6 @@
 'use strict';
 
-importAnExternalUtilityJSFile("ConversionHelper", "js/OneCountryLanguageTextJSFiles/languageConversionHelperVersion21.js");
+importAnExternalJSFile("ConversionHelper", "js/OneCountryLanguageTextJSFiles/languageConversionHelperVersion21.js");
 
 // Application (Page) Name
 currentEWorldPage = "Data Languages";
@@ -415,7 +415,7 @@ function convertTheRestFeaturesOfAllCountries(englishToSelectedLanguageJSONObjec
         }
     }
     convertTheComments(englishToSelectedLanguageJSONObject);
-    // console.log(JSON.stringify(featuresOfAllCountries));
+    console.log(JSON.stringify(featuresOfAllCountries)); // copy top to var featuresOfAllCountries = just before and delete "HI" and below
 }
 
 function convertTheComments(englishToSelectedLanguageJSONObject) {
